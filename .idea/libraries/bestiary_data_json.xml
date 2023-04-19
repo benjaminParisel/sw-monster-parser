@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="bestiary_data.json">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/fixtures/bestiary_data.json.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

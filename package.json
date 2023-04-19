@@ -1,0 +1,21 @@
+{
+  "name": "sw-monster-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "loadData": "ts-node src/getSwarfarmMonster.ts",
+    "generate": "ts-node src/parser.ts",
+    "setra": "ts-node src/setra.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.15.11",
+    "eslint": "^8.38.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
