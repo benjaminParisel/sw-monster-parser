@@ -4,35 +4,40 @@ Call recursively the API to retrieve each monster data
 
 ## Pre-requisite
 
-[Generate a swarfarm token](https://github.com/swarfarm/swarfarm#jwt-authentication) and copy it on `getSwarfarmMonster.ts`
+[Generate a swarfarm token](https://github.com/swarfarm/swarfarm#jwt-authentication) and copy it on `src/example.ts` for `API_TOKEN` constant.
+
+## Setup
+
+1. Run `npm install`, or `pnpn install` or `yarn install`
+2. Run `pnpn run start`
+3. In `output` folder, you will found a sw-monsters.json file.
 
 ## Usage
 
-* Create a ts file to make your result as you need.
+- Create a ts file to make your result as you need, an example on src/example.ts is done.
+- You can now run `ts-node ./src/example.ts`
+
+## Customize
+
+You can update mapping to define a Function with custom mapping, like is done on example.ts file.
 
 ```
-    // ./src/main.ts
-    import { five_stars, ld_no_awake, second_awake, three_four_stars_awake } from './getSwarfarmMonster';
-    import { parseFolder } from './parser';
-
-    const OUTPUT_FOLDER = 'output/Setra';
-
-    const generateData = (folderName: string = 'output') => {
-        five_stars(folderName);
-        three_four_stars_awake(folderName);
-        ld_no_awake(folderName);
-        second_awake(folderName);
-    };
-    // Call the API endpoint
-    generateData('output/Setra');
-    // Parse input folder to write a json file with monster data
-    parseFolder(OUTPUT_FOLDER, 'sw-monsters' );
+    const customMapping = ({ name, element, com2us_id, family_id, image_filename, natural_stars, base_stars, awaken_level, awakens_from,awakens_to }: any): Monster => ({
+        name,
+        element,
+        com2us_id,
+        family_id,
+        image_filename,
+        natural_stars,
+        isAwaken: (natural_stars != base_stars),
+        isDoubleAwaken: (awaken_level == 2),
+        awakens_from,
+        awakens_to
+    });
 ```
 
-* You can now run `ts-node ./src/main.ts`
-
-# License
-This project is licensed under the Apache 2.0 License - see the LICENSE file for details
+Warning: Don't forget to update Monster interface if you need more info mapping
 
 # Acknowledgments
-* [SwarfarmAPI](https://github.com/swarfarm/swarfarm) to retrieve all monster data
+
+- [SwarfarmAPI](https://github.com/swarfarm/swarfarm) to retrieve all monster data

@@ -1,13 +1,12 @@
-import { Monster, writeFile } from './utils';
+import { writeFile } from './utils';
 import * as fs from 'fs';
 import * as path from 'path';
+import { Monster } from './types';
 
 /**
- * START PARAMETER
+ * Default PARAMETER
  */
-const outputFilename: string = 'Setra_with_LD';
-
-const formatData = ({ name, element, com2us_id, family_id, image_filename, natural_stars, base_stars }: any): Monster => ({
+const defaultMapping = ({ name, element, com2us_id, family_id, image_filename, natural_stars, base_stars}: any): Monster => ({
     name,
     element,
     com2us_id,
@@ -21,7 +20,11 @@ const formatData = ({ name, element, com2us_id, family_id, image_filename, natur
  */
 
 
-export const parseFolder = (folderPath: string = 'output', resultNameFile: string = 'sw-monsters') => {
+export const aggregateFolderData = (
+    folderPath: string = 'output',
+    resultNameFile: string = 'sw-monsters',
+    keysToExtract: any = defaultMapping 
+    ) => {
     const allMonsters: Monster[] = []; // array to hold all monsters
 
     fs.readdirSync(folderPath).forEach((fileName) => {
@@ -32,23 +35,7 @@ export const parseFolder = (folderPath: string = 'output', resultNameFile: strin
             allMonsters.push(...monstersInFile);
         }
     });
-    const formattedData: Monster[] = allMonsters.map(formatData);
+    const formattedData: Monster[] = allMonsters.map(keysToExtract);
     writeFile(formattedData, resultNameFile);
     console.log('[Monster entries]:', formattedData.length);
 };
-
-
-// const mobs_five_stars: any[] = five_stars;
-// const mobs_light: any[] = light_4_stars;
-// const mobs_dark: any[] = dark_4_stars;
-// // Concat 2a mobs and all monster from json import
-// const monsterData: any[] = monsters_source.concat(mobs_five_stars, secondAwake, mobs_light, mobs_dark);
-
-// // let debug: Array<any> = monsterData.filter((mob: Monster) => mob.name === "Carcano");
-// // console.table(debug);
-// // writeFile(debug, 'debug');
-// // Filter selected key
-// const formattedData: Monster[] = monsterData.map(formatData);
-
-// writeFile(formattedData, outputFilename);
-

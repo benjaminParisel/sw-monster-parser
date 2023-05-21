@@ -6,8 +6,7 @@
   "scripts": {
     "loadData": "ts-node src/getSwarfarmMonster.ts",
     "generate": "ts-node src/parser.ts",
-    "setra": "ts-node src/setra.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node src/example.ts"
   },
   "keywords": [],
   "author": "",
