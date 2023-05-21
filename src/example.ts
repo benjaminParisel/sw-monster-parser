@@ -4,7 +4,8 @@ import { Monster } from './types';
 
 const OUTPUT_FOLDER = 'output/examples';
 
-const customMapping = ({ name, element, com2us_id, family_id, image_filename, natural_stars, base_stars, awaken_level, awakens_from,awakens_to }: any): Monster => ({
+const customMapping = ({ id, name, element, com2us_id, family_id, image_filename, natural_stars, base_stars, awaken_level, awakens_from,awakens_to }: any): Monster => ({
+    id,
     name,
     element,
     com2us_id,

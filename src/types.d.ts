@@ -1,5 +1,6 @@
 declare module '*.json';
 export interface Monster {
+    id,
     name: string;
     element: string;
     com2us_id: number;

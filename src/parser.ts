@@ -6,7 +6,8 @@ import { Monster } from './types';
 /**
  * Default PARAMETER
  */
-const defaultMapping = ({ name, element, com2us_id, family_id, image_filename, natural_stars, base_stars}: any): Monster => ({
+const defaultMapping = ({ id ,name, element, com2us_id, family_id, image_filename, natural_stars, base_stars}: any): Monster => ({
+    id, 
     name,
     element,
     com2us_id,

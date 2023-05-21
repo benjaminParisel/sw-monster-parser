@@ -19,7 +19,7 @@ const fetchAndAggregate: any = async (url: string, apiToken: string = '', data: 
             if (result.next) {
                 // recursively fetch more data
                 const nextPageUrl = result.next;
-                return fetchAndAggregate(nextPageUrl, data);
+                return fetchAndAggregate(nextPageUrl,apiToken, data);
             } else {
                 // all data has been fetched, return the aggregated array
                 return data;
